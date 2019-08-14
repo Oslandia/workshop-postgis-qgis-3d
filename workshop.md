@@ -129,6 +129,7 @@ Corresponding project : `boulder_1.qgs`
   - Mouse scroll
   - Right mouse button pan
   - Ctrl-Mouse pan
+  - Shift-Mouse pan
   - arrows keys
   - PgUp / PgDown
 - Discover the basic 3D tools :
