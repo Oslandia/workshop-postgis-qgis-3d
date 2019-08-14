@@ -399,7 +399,7 @@ WHERE
 
 - Visualize this new table
 
-Now, let's make tubes ! The query steps are the following.
+Now, let's make tubes! The query steps are the following.
 - Create a circle at the origin using a buffer
 - extrude the circle at the length of the segment in Z direction
 - rotate the circle to be along the XY plane
@@ -480,7 +480,7 @@ We will now load the LAS file into our PostgreSQL database. You need to edit the
 
 Now run the pipeline (it takes some time): 
 ```bash
-$ pdal pipeline --stream write_pg_pipeline.json
+$ pdal pipeline write_pg_pipeline.json
 ```
 
 You can now: 
@@ -491,7 +491,7 @@ You can now:
 - check in the `pointcloud_formats` that the specific point cloud schema has been registered
 - Use QGIS data browser to open the newly created layer
 
-PDAL has chipped the data into 400 points chunks, called patches, as specified in the pipeline. What you see in QGIS is the patches geometries. QGIS cannot display LIDAR data directly yet (hint: fund it !)
+PDAL has chipped the data into 400 points chunks, called patches, as specified in the pipeline. What you see in QGIS is the patches geometries. QGIS cannot display LIDAR data directly yet (hint: fund it!)
 
 You can now: 
 - try to re-run the PDAL pipeline with 1000 points per patch
@@ -507,7 +507,7 @@ Through the SQL editor, we are able to run the same queries than those
 previously seen with pgAdmin:
 
 ```sql
-> SELECT COUNT(PA) FROM boulder_lidar;
+> SELECT COUNT(pa) FROM boulder_lidar;
 ```
 
 ```sql
@@ -536,7 +536,7 @@ from
 ```
 
 - Then you can load these points as a new layer in the QGIS canvas
-- Try the same query with other patches ( like 15716, 22883, 22754 )
+- Try the same query with other patches (like 15716, 22883, 22754)
 
 You can use QGIS styling capabilities to display the Z value of the points. Go to the styling window of the generated layer, and setup a graduated style using as an expression the z value of the geometry: `z($geometry)`.
 
@@ -563,7 +563,7 @@ from tmp;
 ```
 
 - Then you can load these points as a new layer in the QGIS canvas
-- Try the same query with other patches ( like 15716, 22482, 22754 )
+- Try the same query with other patches (like 15716, 22482, 22754)
 
 Corresponding project: `boulder_13_3doslandiacom_vpi.qgz`
 
