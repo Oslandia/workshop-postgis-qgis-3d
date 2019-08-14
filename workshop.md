@@ -2,56 +2,56 @@
 
 ## Introduction
 
-Duration : 15'
+Duration: 15'
 
 - Who we are
 - Who you are
 - Workshop content and schedule
-- Disclaimer : experimental software !
-- PostGIS reference : https://postgis.net/docs/reference.html
-- PointCloud reference : https://github.com/pgpointcloud/pointcloud
+- Disclaimer: experimental software !
+- PostGIS reference: https://postgis.net/docs/reference.html
+- PointCloud reference: https://github.com/pgpointcloud/pointcloud
 
 Meanwhile, installation of the software 
 
 ## Infrastructure / Installation
 
-Duration : 10' + 15' during introduction
+Duration: 10' + 15' during introduction
 
 To follow this workshop you will need one of these setups.
 
-### Setup A : online PostGIS
+### Setup A: online PostGIS
 
 We already setup a full server-side environment for you, with pre-loaded data.
-On your computer, you will need : 
+On your computer, you will need: 
 
 - The latest QGIS version with 3D enabled, and QuickMapService plugin
-- This workshop : XXXXXXXXXX
-- The dataset : XXXXXXXXX
+- This workshop: XXXXXXXXXX
+- The dataset: XXXXXXXXX
 
-### Setup B : local virtual machine
+### Setup B: local virtual machine
 
 You can also install all necessary software on your local computer, whenever the online PostGIS instance would not be available.
 
-You will need : 
+You will need: 
 - Virtualbox installed on your PC
-- This Virtual Machine : XXXXXX
+- This Virtual Machine: XXXXXX
 - Enough RAM
 
 Everything you will need is already installed in the provided virtual machine.
 
-### Setup C : local install
+### Setup C: local install
 
 You can also install all necessary software on your local computer if you are already running Linux, whenever the online PostGIS instance would not be available.
 
-You will need : 
+You will need: 
 - The latest QGIS version with 3D enabled, and QuickMapService plugin
-- This workshop : XXXXXXXX
-- The dataset : XXXXXXXXX
+- This workshop: XXXXXXXX
+- The dataset: XXXXXXXXX
 - A PGGIS docker container running, [following the steps here](XXXXXXXXXX)
 
 ## DATA
 
-Duration : 10'
+Duration: 10'
 
 We will use datasets from Boulder, Colorado.
 
@@ -61,39 +61,39 @@ See the [data description and download page](XXXXXXXXX) if you want to know more
 
 ### Dataset description
 
-- Areas Of Interest (aoi) : some polygons we are interested in
-- Osm road boulder (osm_road_boulder) : OpenStreetMap roads on a part of Boulder
-- DTM : Digital Terrain Model from XXXX
-- Ortho : Orthophoto from XXXXX
-- Boulder LIDAR ( boulder_lidar ) : LIDAR coverage from the City of Boulder, downsampled
-- Building footprints ( building_footprint ) : 2D building footprints from the city of Boulder
-- Building Roofs : 3D layer of building roofs from the city of Boulder 
-- Building Walls : 3D layer of building walls from the city of Boulder 
+- Areas Of Interest (aoi): some polygons we are interested in
+- Osm road boulder (osm_road_boulder): OpenStreetMap roads on a part of Boulder
+- DTM: Digital Terrain Model from XXXX
+- Ortho: Orthophoto from XXXXX
+- Boulder LIDAR ( boulder_lidar ): LIDAR coverage from the City of Boulder, downsampled
+- Building footprints ( building_footprint ): 2D building footprints from the city of Boulder
+- Building Roofs: 3D layer of building roofs from the city of Boulder 
+- Building Walls: 3D layer of building walls from the city of Boulder 
 
-Other assets : 
-- spider.obj : Spiiiiiideeeeeers !
+Other assets: 
+- spider.obj: Spiiiiiideeeeeers !
 
-### General data informations
+### General data information
 
 Boulder is located at 1655m above sea level.
 
-Projection applied : 
-- NAD83(HARN) / Colorado North (ftUS) : ESPG 2876
+Projection applied: 
+- NAD83(HARN) / Colorado North (ftUS): ESPG 2876
 
 See the areas of interests layer for the locations we are interested in.
 
-LIDAR altitude are in feet. Conversion to meter : 
+LIDAR altitude are in feet. Conversion to meter: 
 - 1 foot = 0.3048 meter
 
 ## QGIS 3D
 
-Duration : 30'
+Duration: 30'
 
 We will first discover QGIS and its 3D capabilities.
 
-We will : 
+We will: 
 - Load building footprints ( 2D )
-- Load a base layer : orthophoto
+- Load a base layer: orthophoto
 - Open a new 3D view for these layers
   - learn the 3D navigation with mouse & keyboard
   - learn available 3D tools
@@ -107,23 +107,24 @@ We will :
     - (models for point layer)
 - Open 3D objects
 
-### Start : loading 2D data
+### Start: loading 2D data
 
-Our data should be located in `~/3d_workshop/boulder_data`.
+The data is located in `~/workshop-postgis-qgis-3d/`, and the QGIS projects for each step are
+located in `~/workshop-postgis-qgis-3d/qgis/`.
 
 - Open QGIS
 - Start a new QGIS project
 - Set the projection to EPSG:2876
-- Find your DATA directory in the browser panel, and add it to favorites
+- Find your data directory in the browser panel, and add it to favorites
 - Open building footprints shapefile
 - Open the styling panel and apply a new color to the footprints
 - Open the orthophoto
 
-Corresponding project : `boulder_1.qgs`
+Corresponding project: `boulder_1.qgs`
 
-### Step 2 : 3D view
+### Step 2: 3D view
 
-- Open a new 3D window : View->New 3D map view
+- Open a new 3D window: View->New 3D map view
 - Navigate the 3D view
   - Mouse pan
   - Mouse scroll
@@ -132,7 +133,7 @@ Corresponding project : `boulder_1.qgs`
   - Shift-Mouse pan
   - arrows keys
   - PgUp / PgDown
-- Discover the basic 3D tools :
+- Discover the basic 3D tools:
   - Camera control
   - Zoom full
   - On-screen navigation
@@ -148,13 +149,13 @@ Corresponding project : `boulder_1.qgs`
     - Vertical scale will enhance the scale for the terrain
   - Terrain shading will make the terrain visible
   - Lights to configure global lights to your 3D scene
-  - Show labels : 
+  - Show labels: 
     - configure labels for footprints and see the change with this option
   - Show map tile info, bounding boxes, camera view center for more technical informations
 
 You can choose online terrain, use terrain shading and see the result.
 
-Now load the `boulder_dtm` raster, used as a terrain model : 
+Now load the `boulder_dtm` raster, used as a terrain model: 
 - open the raster file
 - configure its styling for 2D mode
     - blending mode multiply
@@ -164,9 +165,9 @@ Now load the `boulder_dtm` raster, used as a terrain model : 
 - Choose DEM terrain type and select `boulder_dtm` layer
 - Change the vertical scale and observe the result
 
-Corresponding project : `boulder_2.qgz`
+Corresponding project: `boulder_2.qgz`
 
-### Step 3 : Flight mode
+### Step 3: Flight mode
 
 - Activate "Animation" in the 3D window
 - Select keyframe 0
@@ -180,14 +181,14 @@ Corresponding project : `boulder_2.qgz`
 - Now change the interpolation method and replay
 - Add some keyframes to the movie
 
-Corresponding project : `boulder_3.qgz`
+Corresponding project: `boulder_3.qgz`
 
-### Step 4 : basic 3D symbology
+### Step 4: basic 3D symbology
 
 We will now display our footprints in 3D.
 
-- Open Styling tab for building footprints
-- Enter 3D symbology ( cube symbol )
+- Open the building footprints layer propertiesq
+- Select 3D symbology (cube symbol)
 - Select "single symbol"
 - Verify that altitude clamping is set to "Relative"
 - Choose extrusion height 10
@@ -195,56 +196,56 @@ We will now display our footprints in 3D.
 - Change diffuse and ambient colors
 - See the result
 - Add Edges and change the color
-- Now set the extrusion height to the building height thanks to an expression ( hint : height attribute is in feet )
+- Now set the extrusion height to the building height using an expression (hint: height attribute is in feet)
 
-Corresponding project : `boulder_4.qgz`
+Corresponding project: `boulder_4.qgz`
 
-### Step 5 : advanced 3D symbology
+### Step 5: advanced 3D symbology
 
 We will now use rule-based symbology for 2D objects.
 
 - For the building footprints, choose rule-based rendering in 3D styling
-- Configure the symbology so that : 
+- Configure the symbology so that: 
     - Garages are all 4 meters high
     - Public buildings are extruded, in red
     - All other buildings are extruded in grey
 - Find another nice thematic 3D mapping of your choice
 
-Corresponding project : `boulder_5.qgz`
+Corresponding project: `boulder_5.qgz`
 
-#### Step 6 : relative versus absolute
+#### Step 6: relative versus absolute
 
 We will now extrude the buildings and use absolute positionning instead of relative to the terrain.
 
 - Choose Single Symbol 3D rendering
-- Choose height as attribute value Ground Elevation ( convert to meters )
+- Choose height as attribute value Ground Elevation (convert feet to meters)
     - you will need to multiply the height by the vertical scale set in the 3D window
 - Choose altitude clamping absolute
-- Set extrusion to building height ( convert to meters )
+- Set extrusion to building height (convert feet to meters)
 
-Corresponding project : `boulder_6.qgz`
+Corresponding project: `boulder_6.qgz`
 
-### Step 7 : 3D objects
+### Step 7: 3D objects
 
 We will now open 3D building roofs and walls.
 
 - locate and open the roofs and wall shapefiles
 - Activate 3D symbology for both layers
-    - coordinates in Z are absolute ( and meters )
+    - coordinates in Z are absolute (and meters)
     - choose nice colors :-)
-- Be patient !
-- Enjoy your 3D buildings !
+- Be patient!
+- Enjoy your 3D buildings!
 - Use rule-based symbology for thematic 3D mapping
 
-Corresponding project : `boulder_7.qgz`
+Corresponding project: `boulder_7.qgz`
 
 ## PostGIS 3D
 
-Duration : 70' + 15' pause
+Duration: 70' + 15' pause
 
 We will now discover PostGIS and its 3D capabilities
 
-We will : 
+We will: 
 - Create a new schema for each of you
 - Load 2D data
 - Open this data in QGIS
@@ -261,8 +262,8 @@ We will use QGIS BD Manager for all database-related work.
 Now, let's follow these steps.
 
 - Create a new QGIS project
-- Open QGIS Data source manager ( Layer menu )
-- Create a new PostGIS connexion with the given parameters
+- Open QGIS Data source manager (Layer menu)
+- Create a new PostGIS connection (host=localhost, db=osgeo, user=osgeo, password=osgeo)
 - Try to connect to the database
 - Now open QGIS Database Manager
 - Open your database and create a new schema with your name
@@ -278,15 +279,13 @@ When importing, create spatial indexes.
 
 ### Display PostGIS data
 
-Let's see it !
+Let's see it!
 
 - Just like what we did for Shapefile, display the PostGIS layers in 3D
-- Now load the roof and wall files into PostGIS ( it takes some time )
+- Now load the roof and wall files into PostGIS (it takes some time)
 - Display the roofs and walls in the 3D view
 
-Corresponding tables already exists in the `public` schema if you want to see them now, as the import takes quite a lot of time if you connect on the remote server.
-
-### Querying in 3D : PolyhedralSurfaces and buildings
+### Querying in 3D: PolyhedralSurfaces and buildings
 
 We will now use 3D PostGIS functions to display 3D geometries.
 We are going to use mainly the DB manager of QGIS, but you can also use `psql` in a terminal window to run queries.
@@ -342,7 +341,7 @@ select
     id
     -- translate to ground level
     , st_translate(
-        -- only first geometry of set ( there should be only one anyway)
+        -- only first geometry of set (there should be only one anyway)
         st_geometryn(
             -- extrude the geometry to given height
             st_extrude(geom, 0, 0, bldgheight)
@@ -357,14 +356,14 @@ from
 - Add other attributes to the result
 - Use rule-based rendering to change styling according to building type
 
-### Querying in 3D : Tubes ! 
+### Querying in 3D: Tubes! 
 
 We will make tube 3D objects for the lines coming from OpenStreetMap.
 
 First, cut our lines into individual segments
-See here for more information about this query : http://blog.cleverelephant.ca/2015/02/breaking-linestring-into-segments.html
+See here for more information about this query: http://blog.cleverelephant.ca/2015/02/breaking-linestring-into-segments.html
 
-Query steps are : 
+Query steps are: 
 - select all lines from osm_roads_boulder
 - dump all points of the geometries, keeping the line id
 - use a window function to make a line between two consecutive points
@@ -408,7 +407,7 @@ Now, let's make tubes ! The query steps are the following.
 - translate the circle to the starting point of the line and a correct height
 
 
-The query for segment 234 :
+The query for segment 234:
 
 ```
 select 
@@ -434,23 +433,23 @@ where
 
 - visualize the result in QGIS 3D.
 
-Now write the query for : 
+Now write the query for: 
 - another specific line id
 - all lines
 
-Now try the query with : 
+Now try the query with: 
 - different width for the tubes
 - different heights
 - different buffer types ( e.g. octogon )
 - a polygon as original shape instead of a buffer around a point
 
-## PostGIS 3D : Point Clouds
+## PostGIS 3D: Point Clouds
 
-Duration : 90'
+Duration: 90'
 
 We will now discover PostGIS PointCloud capabilities
 
-We will : 
+We will: 
 - Load Point Cloud data into PostGIS
 - Visualize the Point Cloud data in QGIS ( 2D envelopes only )
 - Query the Point Cloud layer
@@ -460,7 +459,7 @@ We will :
 We will use PDAL to load point clouds into PgPointCloud / PostGIS
 We can also use lasinfo tools to get information on LAS files.
 
-PDAL documentation is available here :  https://pdal.io/
+PDAL documentation is available here:  https://pdal.io/
 
 Get information about `boulder_lite.las`. 
 - Open a terminal
@@ -471,7 +470,7 @@ Get information about `boulder_lite.las`.
 $ lasinfo boulder_lite.las
 ```
 
-Or with PDAL : 
+Or with PDAL: 
 
 ```bash
 $ pdal info --summary boulder_lite.las
@@ -479,12 +478,12 @@ $ pdal info --summary boulder_lite.las
 
 We will now load the LAS file into our PostgreSQL database. You need to edit the PDAL pipeline called `write_pg_pipeline.json` and change the database credentials according to the database you want to store the data to. Do not forget to specify your schema name.
 
-Now run the pipeline (it takes some time) : 
+Now run the pipeline (it takes some time): 
 ```bash
 $ pdal pipeline --stream write_pg_pipeline.json
 ```
 
-You can now : 
+You can now: 
 - open QGIS DB manager
 - refresh the table list
 - check that the LIDAR table has been created
@@ -492,14 +491,14 @@ You can now :
 - check in the `pointcloud_formats` that the specific point cloud schema has been registered
 - Use QGIS data browser to open the newly created layer
 
-PDAL has chipped the data into 400 points chunks, called patches, as specified in the pipeline. What you see in QGIS is the patches geometries. QGIS cannot display LIDAR data directly yet ( hint : fund it ! )
+PDAL has chipped the data into 400 points chunks, called patches, as specified in the pipeline. What you see in QGIS is the patches geometries. QGIS cannot display LIDAR data directly yet (hint: fund it !)
 
-You can now : 
+You can now: 
 - try to re-run the PDAL pipeline with 1000 points per patch
 
-Corresponding project : `boulder_11_3doslandiacom_vpi.qgz`
+Corresponding project: `boulder_11_3doslandiacom_vpi.qgz`
 
-### PgPointCloud : basic, Z, intensity
+### PgPointCloud: basic, Z, intensity
 
 We will now work on our PointCloud data in SQL.
 
@@ -539,9 +538,9 @@ from
 - Then you can load these points as a new layer in the QGIS canvas
 - Try the same query with other patches ( like 15716, 22883, 22754 )
 
-You can use QGIS styling capabilities to display the Z value of the points. Go to the styling window of the generated layer, and setup a graduated style using as an expression the z value of the geometry : `z($geometry)`.
+You can use QGIS styling capabilities to display the Z value of the points. Go to the styling window of the generated layer, and setup a graduated style using as an expression the z value of the geometry: `z($geometry)`.
 
-Corresponding project : `boulder_12_3doslandiacom_vpi.qgz`
+Corresponding project: `boulder_12_3doslandiacom_vpi.qgz`
 
 Now we do the same with the intensity value. We use the `PC_Get(pt pcpoint, dimname text)` function to get the intensity value in our query. Run and style it using a graduated style on the intensity value.
 
@@ -566,7 +565,7 @@ from tmp;
 - Then you can load these points as a new layer in the QGIS canvas
 - Try the same query with other patches ( like 15716, 22482, 22754 )
 
-Corresponding project : `boulder_13_3doslandiacom_vpi.qgz`
+Corresponding project: `boulder_13_3doslandiacom_vpi.qgz`
 
 ### Compression algorithm
 
@@ -579,12 +578,12 @@ for each of the dimensions thanks to the next query:
 select json_array_elements(pc_summary(pa)::json->'dims') from boulder_lidar where id = 1;
 ```
 
-### PointCloud queries : Averaging Z values
+### PointCloud queries: Averaging Z values
 
 
 In fact, there are at least 2 ways to retrieve the average altitude of a patch.
 
-Either we use the *pc_summary* function on patches :
+Either we use the *pc_summary* function on patches:
 
 ```sql
 with tmp as (
@@ -628,7 +627,7 @@ from boulder_lidar;
 
 ### Street average height
 
-We focus on a specific street in Boulder. This street is included in the `aoi` table, and its polygon definition is the following : 
+We focus on a specific street in Boulder. This street is included in the `aoi` table, and its polygon definition is the following: 
 
 ```
 Polygon ((3059754.11213863966986537 1242957.59447286371141672, 3059783.05083170812577009 1242956.8886510815937072, 3059777.0513465590775013 1243585.42294808942824602, 3059752.34758418379351497 1243587.54041343578137457, 3059754.11213863966986537 1242957.59447286371141672))
@@ -703,7 +702,7 @@ where
 
 - visualize the resulting patches in QGIS
 
-Corresponding project : `boulder_14_3doslandiacom_vpi.qgz`
+Corresponding project: `boulder_14_3doslandiacom_vpi.qgz`
 
 2. Points on patches intersecting building 234
 
@@ -734,7 +733,7 @@ from
 - Display the points in QGIS
 - Apply a classification to see the Z values
 
-Corresponding project : `boulder_15_3doslandiacom_vpi.qgz`
+Corresponding project: `boulder_15_3doslandiacom_vpi.qgz`
 
 3. All points intersecting building 234
 
@@ -765,7 +764,7 @@ from
 - Display the points in QGIS
 - Apply a classification to see the Z values
 
-Corresponding project : `boulder_16_3doslandiacom_vpi.qgz`
+Corresponding project: `boulder_16_3doslandiacom_vpi.qgz`
 
 4. Average elevation
 
@@ -802,11 +801,11 @@ group by
 
 ### Max altitude of buildings
 
-This query is simpler, since the max of all patches is the max of all points : 
+This query is simpler, since the max of all patches is the max of all points: 
 
 ```sql
 -- max altitude for each building
--- easier : max(max(x), max(y)) = max(x,y)
+-- easier: max(max(x), max(y)) = max(x,y)
 select 
 	b.id as building_id
 	, max(pc_patchmax(pc_intersection(bl.pa, b.geom), 'Z')) as z_max
@@ -826,7 +825,7 @@ We can now extrude the buildings by their altitude, getting real values instead 
 
 We extrude to the maximum altitude of the building.
 
-Steps are : 
+Steps are: 
 - join footprint table and lidar height
 - get building ID and max LIDAR height
 - extrude the building
@@ -853,16 +852,16 @@ group by
 ```
 
 - run the query on all buildings
-- visualize the results in QGIS 3D (hint : no symbology for 2D representation is much faster)
+- visualize the results in QGIS 3D (hint: no symbology for 2D representation is much faster)
 - determine what the problem is with our extrusion
 
-Corresponding project : `boulder_17_3doslandiacom_vpi.qgz`
+Corresponding project: `boulder_17_3doslandiacom_vpi.qgz`
 
 ### Spider attack
 
 We can simulate a spider attack along main roads. Generate a point layer along the roads using the following queries. Then use the `model` 3D representation for point layers. Choose the `spider.obj` model.
 
-Warning : QGIS is very unstable for this feature and will probably crash.
+Warning: QGIS is very unstable for this feature and will probably crash.
 
 ```sql
 select 
@@ -884,7 +883,7 @@ from (
 ) as pts
 ```
 
-Corresponding project : `boulder_18_3doslandiacom_vpi.qgz`
+Corresponding project: `boulder_18_3doslandiacom_vpi.qgz`
 
 ### Further exercises
 
@@ -898,7 +897,7 @@ Corresponding project : `boulder_18_3doslandiacom_vpi.qgz`
 
 ## Wrap-up
 
-We used a lot of features : 
+We used a lot of features: 
 - 3D visualization with QGIS
 - PostGIS 2D features
 - PostGIS 3D features
