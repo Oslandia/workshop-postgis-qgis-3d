@@ -56,23 +56,21 @@ Duration: 10'
 
 We will use data from Boulder, Colorado.
 
-The dataset is composed of shapefile's, TIF files
-
-See the [data description and download page](XXXXXXXXX) if you want to know more, skip to next step if you already downloaded the dataset.
-
 ### Dataset description
 
-- Areas Of Interest (boulder_aoi): some polygons we are interested in
-- Osm road boulder (osm_road_boulder): OpenStreetMap roads on a part of Boulder
-- DTM: Digital Terrain Model (boulder_dtm)
-- Ortho: Orthophoto (boulder_orth
-- Boulder LIDAR (boulder_lidar): LIDAR coverage from the City of Boulder, downsampled
-- Building footprints (building_footprints): 2D building footprints from the city of Boulder
-- Building Roofs (boulder_3d_roofs_cropped_m): 3D layer of building roofs from the city of Boulder 
-- Building Walls (boulder_3d_walls_cropped_m): 3D layer of building walls from the city of Boulder 
+The dataset is composed of both 2D and 3D data, provided as files of various formats.
+
+- Areas Of Interest (`boulder_aoi.shp`): some polygons we are interested in
+- OSM Road Boulder (`boulder_osm_road_2876.shp`): OpenStreetMap roads on a part of Boulder
+- DTM: Digital Terrain Model (`boulder_dtm.tif`)
+- Ortho: Orthophoto (`boulder_ortho.tif`)
+- Boulder LIDAR (`boulder_lidar.las`): LIDAR coverage from the City of Boulder, downsampled
+- Building footprints (`building_footprints_2876.shp`)): 2D building footprints from the city of Boulder
+- Building Roofs (`boulder_3d_roof_cropped_m.shp`): 3D layer of building roofs from the city of Boulder 
+- Building Walls (`boulder_3d_wall_cropped_m.shp`): 3D layer of building walls from the city of Boulder 
 
 Other assets: 
-- spider.obj: Spiiiiiideeeeeers !
+- `spider.obj`: Spiiiiiideeeeeers !
 
 ### General data information
 
