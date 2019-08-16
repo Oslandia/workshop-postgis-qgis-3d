@@ -1,5 +1,7 @@
 # Workshop on PostGIS and QGIS with 3D data
 
+https://github.com/Oslandia/workshop-postgis-qgis-3d
+
 ![](screenshots/foss4g-2019-bucharest.jpg)
 
 ## Introduction
@@ -65,7 +67,7 @@ The dataset is composed of both 2D and 3D data, provided as files of various for
 - DTM: Digital Terrain Model (`boulder_dtm.tif`)
 - Ortho: Orthophoto (`boulder_ortho.tif`)
 - Boulder LIDAR (`boulder_lidar.las`): LIDAR coverage from the City of Boulder, downsampled
-- Building footprints (`building_footprints_2876.shp`)): 2D building footprints from the city of Boulder
+- Building footprints (`building_footprints_2876.shp`): 2D building footprints from the city of Boulder
 - Building Roofs (`boulder_3d_roof_cropped_m.shp`): 3D layer of building roofs from the city of Boulder 
 - Building Walls (`boulder_3d_wall_cropped_m.shp`): 3D layer of building walls from the city of Boulder 
 
