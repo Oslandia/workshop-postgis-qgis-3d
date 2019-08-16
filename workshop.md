@@ -7,11 +7,11 @@ Duration: 15'
 - Who we are
 - Who you are
 - Workshop content and schedule
-- Disclaimer: experimental software !
+- Disclaimer: experimental software!
 - PostGIS reference: https://postgis.net/docs/reference.html
 - PointCloud reference: https://github.com/pgpointcloud/pointcloud
 
-Meanwhile, installation of the software 
+Meanwhile, installation of the software...
 
 ## Infrastructure / Installation
 
@@ -19,25 +19,27 @@ Duration: 10' + 15' during introduction
 
 To follow this workshop you will need one of these setups.
 
-### Setup A: online PostGIS
+### Setup A: local virtual machine
 
-We already setup a full server-side environment for you, with pre-loaded data.
-On your computer, you will need: 
-
-- The latest QGIS version with 3D enabled, and QuickMapService plugin
-- This workshop: XXXXXXXXXX
-- The dataset: XXXXXXXXX
-
-### Setup B: local virtual machine
-
-You can also install all necessary software on your local computer, whenever the online PostGIS instance would not be available.
+The easiest setup is to use the virtual machine we created for this workshop.
 
 You will need: 
 - Virtualbox installed on your PC
-- This Virtual Machine: XXXXXX
-- Enough RAM
+- This Virtual Machine: workshop-postgis-qgis-3d.ova (on the USB key)
+- Enough RAM (more than 8G allocated to the VM is recommended)
 
-Everything you will need is already installed in the provided virtual machine.
+Everything you will need is already installed in the virtual machine.
+
+### Setup B: online PostGIS
+
+We set up a remote PostGIS instance for you on 3d.oslandia.com, with pre-loaded data. On your
+computer, you will need: 
+
+- The latest QGIS version with 3D enabled, and QuickMapService plugin
+- This workshop: https://github.com/Oslandia/workshop-postgis-qgis-3d
+- The dataset: XXXXXXXXX
+
+PostGIS connection information: host=3d.oslandia.com port=32768
 
 ### Setup C: local install
 
@@ -45,7 +47,7 @@ You can also install all necessary software on your local computer if you are al
 
 You will need: 
 - The latest QGIS version with 3D enabled, and QuickMapService plugin
-- This workshop: XXXXXXXX
+- This workshop: https://github.com/Oslandia/workshop-postgis-qgis-3d
 - The dataset: XXXXXXXXX
 - A PGGIS docker container running, [following the steps here](XXXXXXXXXX)
 
@@ -61,14 +63,14 @@ See the [data description and download page](XXXXXXXXX) if you want to know more
 
 ### Dataset description
 
-- Areas Of Interest (aoi): some polygons we are interested in
+- Areas Of Interest (boulder_aoi): some polygons we are interested in
 - Osm road boulder (osm_road_boulder): OpenStreetMap roads on a part of Boulder
-- DTM: Digital Terrain Model from XXXX
-- Ortho: Orthophoto from XXXXX
-- Boulder LIDAR ( boulder_lidar ): LIDAR coverage from the City of Boulder, downsampled
-- Building footprints ( building_footprint ): 2D building footprints from the city of Boulder
-- Building Roofs: 3D layer of building roofs from the city of Boulder 
-- Building Walls: 3D layer of building walls from the city of Boulder 
+- DTM: Digital Terrain Model (boulder_dtm) from XXXX
+- Ortho: Orthophoto (boulder_orth)from XXXXX
+- Boulder LIDAR (boulder_lidar): LIDAR coverage from the City of Boulder, downsampled
+- Building footprints (building_footprints): 2D building footprints from the city of Boulder
+- Building Roofs (boulder_3d_roofs_cropped_m): 3D layer of building roofs from the city of Boulder 
+- Building Walls (boulder_3d_walls_cropped_m): 3D layer of building walls from the city of Boulder 
 
 Other assets: 
 - spider.obj: Spiiiiiideeeeeers !
@@ -92,7 +94,7 @@ Duration: 30'
 We will first discover QGIS and its 3D capabilities.
 
 We will: 
-- Load building footprints ( 2D )
+- Load building footprints (2D)
 - Load a base layer: orthophoto
 - Open a new 3D view for these layers
   - learn the 3D navigation with mouse & keyboard
@@ -105,7 +107,9 @@ We will:
 - Play with advanced 3D symbology for 2D objects
     - rule-based rendering
     - (models for point layer)
-- Open 3D objects
+- Open 3D objects (PolygonZ objects)
+
+In this "QGIS 3D" section we will only work with local data files (shapefiles and TIF files).
 
 ### Start: loading 2D data
 
@@ -132,7 +136,6 @@ Corresponding project: `boulder_1.qgs`
   - Ctrl-Mouse pan
   - Shift-Mouse pan
   - arrows keys
-  - PgUp / PgDown
 - Discover the basic 3D tools:
   - Camera control
   - Zoom full
@@ -187,11 +190,11 @@ Corresponding project: `boulder_3.qgz`
 
 We will now display our footprints in 3D.
 
-- Open the building footprints layer propertiesq
+- Open the building footprints layer properties
 - Select 3D symbology (cube symbol)
 - Select "single symbol"
 - Verify that altitude clamping is set to "Relative"
-- Choose extrusion height 10
+- Set extrusion to 10
 - See the result in 3D window
 - Change diffuse and ambient colors
 - See the result
@@ -220,7 +223,7 @@ We will now extrude the buildings and use absolute positionning instead of relat
 - Choose Single Symbol 3D rendering
 - Choose height as attribute value Ground Elevation (convert feet to meters)
     - you will need to multiply the height by the vertical scale set in the 3D window
-- Choose altitude clamping absolute
+- Choose Altitude clamping absolute
 - Set extrusion to building height (convert feet to meters)
 
 Corresponding project: `boulder_6.qgz`
@@ -243,7 +246,7 @@ Corresponding project: `boulder_7.qgz`
 
 Duration: 70' + 15' pause
 
-We will now discover PostGIS and its 3D capabilities
+We will now discover PostGIS and its 3D capabilities.
 
 We will: 
 - Create a new schema for each of you
