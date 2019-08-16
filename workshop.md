@@ -46,7 +46,7 @@ On your local machine you will need:
 
 - The latest QGIS version with 3D enabled, and QuickMapService plugin
 - This workshop: https://github.com/Oslandia/workshop-postgis-qgis-3d
-- The dataset: XXXXXXXXX
+- The dataset: http://hekla.oslandia.net/workshop-postgis-qgis-3d/boulder_data.tgz
 
 PostGIS connection information: host=3d.oslandia.com port=32768.
 
@@ -71,6 +71,10 @@ The dataset is composed of both 2D and 3D data, provided as files of various for
 
 Other assets: 
 - `spider.obj`: Spiiiiiideeeeeers !
+
+The dataset is available at
+http://hekla.oslandia.net/workshop-postgis-qgis-3d/boulder_data.tgz, but note
+that you don't need to download it if you use the workshop virtual machine.
 
 ### General data information
 
