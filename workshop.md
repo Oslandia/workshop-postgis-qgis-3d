@@ -114,7 +114,7 @@ We will:
 
 In this "QGIS 3D" section we will only work with local data files (shapefiles and TIF files).
 
-### Start: loading 2D data
+### Step 1: loading 2D data
 
 The data is located in `~/workshop-postgis-qgis-3d/`, and the QGIS projects for each step are
 located in `~/workshop-postgis-qgis-3d/qgis/`.
