@@ -225,7 +225,7 @@ Corresponding project: `boulder_5.qgz`
 
 ![](screenshots/Screenshot_20190807_171525.png)
 
-#### Step 6: relative versus absolute
+### Step 6: relative versus absolute
 
 We will now extrude the buildings and use absolute positionning instead of relative to the terrain.
 
