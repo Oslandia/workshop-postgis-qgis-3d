@@ -17,39 +17,36 @@ Meanwhile, installation of the software...
 
 Duration: 10' + 15' during introduction
 
-To follow this workshop you will need one of these setups.
+For this workshop you have two choices. Either use a VirtualBox virtual machine pre-installed with
+all the necessary software and data, or use your own machine. If you use your own machine you will
+need to install the latest version of QGIS, and download the workshop dataset, which may take some
+time depending on the network connection.
 
-### Setup A: local virtual machine
+See Setup A and Setup B below for more information.
 
-The easiest setup is to use the virtual machine we created for this workshop.
+### Setup A: virtual machine
 
-You will need: 
-- Virtualbox installed on your PC
+The easiest setup is to use the virtual machine we created for this workshop. The virtual machine
+comes with QGIS, Postgres (with all the necessary extensions), and the workshop dataset.
+
+On your local machine you will need:
+
+- VirtualBox
 - This Virtual Machine: workshop-postgis-qgis-3d.ova (on the USB key)
 - Enough RAM (more than 8G allocated to the VM is recommended)
 
-Everything you will need is already installed in the virtual machine.
-
 ### Setup B: online PostGIS
 
-We set up a remote PostGIS instance for you on 3d.oslandia.com, with pre-loaded data. On your
-computer, you will need: 
+In this setup you will use QGIS installed on your local machine, and you will rely on the PostGIS
+instance we set up for you on 3d.oslandia.com.
+
+On your local machine you will need:
 
 - The latest QGIS version with 3D enabled, and QuickMapService plugin
 - This workshop: https://github.com/Oslandia/workshop-postgis-qgis-3d
 - The dataset: XXXXXXXXX
 
-PostGIS connection information: host=3d.oslandia.com port=32768
-
-### Setup C: local install
-
-You can also install all necessary software on your local computer if you are already running Linux, whenever the online PostGIS instance would not be available.
-
-You will need: 
-- The latest QGIS version with 3D enabled, and QuickMapService plugin
-- This workshop: https://github.com/Oslandia/workshop-postgis-qgis-3d
-- The dataset: XXXXXXXXX
-- A PGGIS docker container running, [following the steps here](XXXXXXXXXX)
+PostGIS connection information: host=3d.oslandia.com port=32768.
 
 ## DATA
 
@@ -124,7 +121,7 @@ located in `~/workshop-postgis-qgis-3d/qgis/`.
 - Open the styling panel and apply a new color to the footprints
 - Open the orthophoto
 
-Corresponding project: `boulder_1.qgs`
+Corresponding project: `boulder_1.qgz`
 
 ### Step 2: 3D view
 
