@@ -1,4 +1,4 @@
-# 3D Workshop with PostGIS and QGIS
+# Workshop on PostGIS and QGIS with 3D data
 
 ![](screenshots/foss4g-2019-bucharest.jpg)
 
