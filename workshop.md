@@ -52,9 +52,9 @@ PostGIS connection information: host=3d.oslandia.com port=32768.
 
 Duration: 10'
 
-We will use datasets from Boulder, Colorado.
+We will use data from Boulder, Colorado.
 
-The data is split into the data you need on your local computer, and the data needed on the server.
+The dataset is composed of shapefile's, TIF files
 
 See the [data description and download page](XXXXXXXXX) if you want to know more, skip to next step if you already downloaded the dataset.
 
@@ -62,8 +62,8 @@ See the [data description and download page](XXXXXXXXX) if you want to know more
 
 - Areas Of Interest (boulder_aoi): some polygons we are interested in
 - Osm road boulder (osm_road_boulder): OpenStreetMap roads on a part of Boulder
-- DTM: Digital Terrain Model (boulder_dtm) from XXXX
-- Ortho: Orthophoto (boulder_orth)from XXXXX
+- DTM: Digital Terrain Model (boulder_dtm)
+- Ortho: Orthophoto (boulder_orth
 - Boulder LIDAR (boulder_lidar): LIDAR coverage from the City of Boulder, downsampled
 - Building footprints (building_footprints): 2D building footprints from the city of Boulder
 - Building Roofs (boulder_3d_roofs_cropped_m): 3D layer of building roofs from the city of Boulder 
@@ -246,7 +246,6 @@ Duration: 70' + 15' pause
 We will now discover PostGIS and its 3D capabilities.
 
 We will: 
-- Create a new schema for each of you
 - Load 2D data
 - Open this data in QGIS
 - Load 3D data into the database
@@ -263,14 +262,17 @@ Now, let's follow these steps.
 
 - Create a new QGIS project
 - Open QGIS Data source manager (Layer menu)
-- Create a new PostGIS connection (host=localhost, db=osgeo, user=osgeo, password=osgeo)
+- Create a new PostGIS connection
 - Try to connect to the database
 - Now open QGIS Database Manager
-- Open your database and create a new schema with your name
+- If you use the PostGIS instance on 3d.oslandia.com create a new schema with your name, otherwise
+  you can just use the public schema
 
 We will now import some data.
 
-Note that in all following work, you will have to prefix table names by your own schema name.
+If you use the PostGIS instance on 3d.oslandia.com you will need to load the data into your schema,
+as opposed to the public schema. And in SQL queries you will need to prefix the table names with
+your schema name (e.g. `vpi.boulder_3d_roof_cropped_m`).
 
 - Use the DB Manager to load the building footprints shapefiles
 - Now import the OSM roads
@@ -285,6 +287,8 @@ Let's see it!
 - Now load the roof and wall files into PostGIS (it takes some time)
 - Display the roofs and walls in the 3D view
 
+Corresponding projects: `boulder_8_localhost.qgz` (or `boulder_8_3solandiacom.qgz`).
+
 ### Querying in 3D: PolyhedralSurfaces and buildings
 
 We will now use 3D PostGIS functions to display 3D geometries.
@@ -296,7 +300,7 @@ Start with 1 PolyhedralSurface
 - Load query results as a new layer
 - Configure the 3D view
 
-```
+```sql
 select 
     -- we need an id
     1 as id,
@@ -315,7 +319,7 @@ select
 
 Now 100 random PolyhedralSurfaces
 
-```
+```sql
 select 
     nb as id,
     -- translate to ground level
@@ -336,7 +340,7 @@ from
 
 We now want to make PolyhedralSurfaces out of the footprints.
 
-```
+```sql
 select
     id
     -- translate to ground level
@@ -364,7 +368,7 @@ First, cut our lines into individual segments
 See here for more information about this query: http://blog.cleverelephant.ca/2015/02/breaking-linestring-into-segments.html
 
 Query steps are: 
-- select all lines from osm_roads_boulder
+- select all lines from osm_road_boulder
 - dump all points of the geometries, keeping the line id
 - use a window function to make a line between two consecutive points
     - partition by line id and order by its id and the position of the point in the line
@@ -373,7 +377,7 @@ Query steps are: 
 
 Do not forget to add your schema to table names in the following queries.
 
-```
+```sql
 create table 
     osm_roads_boulder_segment as
 WITH segments AS (
@@ -409,7 +413,7 @@ Now, let's make tubes! The query steps are the following.
 
 The query for segment 234:
 
-```
+```sql
 select 
     uid
 	, st_translate(
@@ -433,14 +437,18 @@ where
 
 - visualize the result in QGIS 3D.
 
+Corresponding projects: `boulder_9_localhost.qgz` (or `boulder_9_3solandiacom.qgz`).
+
 Now write the query for: 
 - another specific line id
 - all lines
 
+Corresponding projects: `boulder_10_localhost.qgz` (or `boulder_10_3solandiacom.qgz`).
+
 Now try the query with: 
-- different width for the tubes
+- different widths for the tubes
 - different heights
-- different buffer types ( e.g. octogon )
+- different buffer types (e.g. octogon)
 - a polygon as original shape instead of a buffer around a point
 
 ## PostGIS 3D: Point Clouds
@@ -451,7 +459,7 @@ We will now discover PostGIS PointCloud capabilities
 
 We will: 
 - Load Point Cloud data into PostGIS
-- Visualize the Point Cloud data in QGIS ( 2D envelopes only )
+- Visualize the Point Cloud data in QGIS (2D envelopes only)
 - Query the Point Cloud layer
 
 ### Loading point clouds
@@ -496,12 +504,11 @@ PDAL has chipped the data into 400 points chunks, called patches, as specified i
 You can now: 
 - try to re-run the PDAL pipeline with 1000 points per patch
 
-Corresponding project: `boulder_11_3doslandiacom_vpi.qgz`
+Corresponding project: `boulder_11_localhost.qgz` (or `boulder_11_3doslandiacom.qgz`).
 
 ### PgPointCloud: basic, Z, intensity
 
 We will now work on our PointCloud data in SQL.
-
 
 Through the SQL editor, we are able to run the same queries than those
 previously seen with pgAdmin:
@@ -540,7 +547,7 @@ from
 
 You can use QGIS styling capabilities to display the Z value of the points. Go to the styling window of the generated layer, and setup a graduated style using as an expression the z value of the geometry: `z($geometry)`.
 
-Corresponding project: `boulder_12_3doslandiacom_vpi.qgz`
+Corresponding project: `boulder_12_localhost.qgz` (or `boulder_12_3doslandiacom.qgz`).
 
 Now we do the same with the intensity value. We use the `PC_Get(pt pcpoint, dimname text)` function to get the intensity value in our query. Run and style it using a graduated style on the intensity value.
 
@@ -565,7 +572,7 @@ from tmp;
 - Then you can load these points as a new layer in the QGIS canvas
 - Try the same query with other patches (like 15716, 22482, 22754)
 
-Corresponding project: `boulder_13_3doslandiacom_vpi.qgz`
+Corresponding project: `boulder_13_3doslandiacom.qgz`
 
 ### Compression algorithm
 
@@ -653,30 +660,33 @@ one.
 We first explode the patches and filter points.
 
 ```sql
-with points_in_area as (
+with area(geom) as (
+    select st_geomfromtext(
+        'Polygon ((3059754.11213863966986537 1242957.59447286371141672, 3059783.05083170812577009 1242956.8886510815937072, 3059777.0513465590775013 1243585.42294808942824602, 3059752.34758418379351497 1243587.54041343578137457, 3059754.11213863966986537 1242957.59447286371141672))'
+		, 2876)
+),
+points_in_area as (
 	select
-		pc_explode(pa) as pt
+		pc_explode(pa) as pt,
+        area.geom as area_geom
 	from 
-		boulder_lidar
+		boulder_lidar, area
 where 
-	pc_intersects(pa,
-		st_geomfromtext('Polygon ((3059754.11213863966986537 1242957.59447286371141672, 3059783.05083170812577009 1242956.8886510815937072, 3059777.0513465590775013 1243585.42294808942824602, 3059752.34758418379351497 1243587.54041343578137457, 3059754.11213863966986537 1242957.59447286371141672))'
-		,'2876'))
+	pc_intersects(pa, area.geom)
 )
 select
-	avg(pc_get(pt, 'TODO_DIMENSION')) as alt
+	avg(pc_get(pt, 'Z')) * 0.3048 as alt
 from 
 	points_in_area
 where 
-	pc_get(pt, 'Classification') = TODO_CLASSIFICATION_LEVEL
-order by 
-	alt desc 
-limit 1;
+	pc_get(pt, 'Classification') = 2 and
+    st_intersects(pt::geometry(pointzm, 2876), area_geom)
+;
 ```
 
 - Run the query and get the value
-- What about max altitude of the street ?
-- What about min altitude of the street ?
+- What about max altitude of the street?
+- What about min altitude of the street?
 
 ### Building footprints
 
@@ -702,7 +712,7 @@ where
 
 - visualize the resulting patches in QGIS
 
-Corresponding project: `boulder_14_3doslandiacom_vpi.qgz`
+Corresponding project: `boulder_14_localhost.qgz (or `boulder_14_3doslandiacom.qgz`).
 
 2. Points on patches intersecting building 234
 
@@ -733,7 +743,7 @@ from
 - Display the points in QGIS
 - Apply a classification to see the Z values
 
-Corresponding project: `boulder_15_3doslandiacom_vpi.qgz`
+Corresponding project: `boulder_15_localhost.qgz` (or `boulder_15_3doslandiacom.qgz`).
 
 3. All points intersecting building 234
 
@@ -764,7 +774,7 @@ from
 - Display the points in QGIS
 - Apply a classification to see the Z values
 
-Corresponding project: `boulder_16_3doslandiacom_vpi.qgz`
+Corresponding project: `boulder_15_localhost.qgz` (or `boulder_16_3doslandiacom.qgz`).
 
 4. Average elevation
 
@@ -855,7 +865,7 @@ group by
 - visualize the results in QGIS 3D (hint: no symbology for 2D representation is much faster)
 - determine what the problem is with our extrusion
 
-Corresponding project: `boulder_17_3doslandiacom_vpi.qgz`
+Corresponding project: `boulder_17_localhost.qgz (or `boulder_17_3doslandiacom.qgz`).
 
 ### Spider attack
 
@@ -878,12 +888,12 @@ from (
                 , geom)
             , 10))).geom as geom 
     from 
-        boulder_osm_roads_2876
+        boulder_osm_road_2876
     limit 100 
-) as pts
+) as pts;
 ```
 
-Corresponding project: `boulder_18_3doslandiacom_vpi.qgz`
+Corresponding project: `boulder_18_localhost.qgz` (or `boulder_18_3doslandiacom.qgz`).
 
 ### Further exercises
 
@@ -897,10 +907,10 @@ Corresponding project: `boulder_18_3doslandiacom_vpi.qgz`
 
 ## Wrap-up
 
-We used a lot of features: 
+We've used a lot of features in this workshop:
 - 3D visualization with QGIS
 - PostGIS 2D features
-- PostGIS 3D features
+- PostGIS 3D features (with the sfcgal extension)
 - PgPointCloud 3D features
 
 - Showcase your best 3D visualization
