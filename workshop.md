@@ -1,5 +1,7 @@
 # 3D Workshop with PostGIS and QGIS
 
+![](screenshots/foss4g-2019-bucharest.jpg)
+
 ## Introduction
 
 Duration: 15'
@@ -167,6 +169,8 @@ Now load the `boulder_dtm` raster, used as a terrain model: 
 
 Corresponding project: `boulder_2.qgz`
 
+![](screenshots/Screenshot_20190807_154440.png)
+
 ### Step 3: Flight mode
 
 - Activate "Animation" in the 3D window
@@ -200,6 +204,8 @@ We will now display our footprints in 3D.
 
 Corresponding project: `boulder_4.qgz`
 
+![](screenshots/Screenshot_20190807_162156.png)
+
 ### Step 5: advanced 3D symbology
 
 We will now use rule-based symbology for 2D objects.
@@ -212,6 +218,8 @@ We will now use rule-based symbology for 2D objects.
 - Find another nice thematic 3D mapping of your choice
 
 Corresponding project: `boulder_5.qgz`
+
+![](screenshots/Screenshot_20190807_171525.png)
 
 #### Step 6: relative versus absolute
 
@@ -238,6 +246,8 @@ We will now open 3D building roofs and walls.
 - Use rule-based symbology for thematic 3D mapping
 
 Corresponding project: `boulder_7.qgz`
+
+![](screenshots/Screenshot_20190807_174740.png)
 
 ## PostGIS 3D
 
@@ -451,6 +461,8 @@ Now try the query with:
 - different buffer types (e.g. octogon)
 - a polygon as original shape instead of a buffer around a point
 
+![](screenshots/Screenshot_20190808_092211.png)
+
 ## PostGIS 3D: Point Clouds
 
 Duration: 90'
@@ -549,6 +561,8 @@ You can use QGIS styling capabilities to display the Z value of the points. Go t
 
 Corresponding project: `boulder_12_localhost.qgz` (or `boulder_12_3doslandiacom.qgz`).
 
+![](screenshots/Screenshot_20190808_180213.png)
+
 Now we do the same with the intensity value. We use the `PC_Get(pt pcpoint, dimname text)` function to get the intensity value in our query. Run and style it using a graduated style on the intensity value.
 
 
@@ -573,6 +587,8 @@ from tmp;
 - Try the same query with other patches (like 15716, 22482, 22754)
 
 Corresponding project: `boulder_13_3doslandiacom.qgz`
+
+![](screenshots/Screenshot_20190808_180431.png)
 
 ### Compression algorithm
 
@@ -687,6 +703,8 @@ where
 - Run the query and get the value
 - What about max altitude of the street?
 - What about min altitude of the street?
+
+![](screenshots/Screenshot_20190808_181452.png)
 
 ### Building footprints
 
@@ -867,6 +885,8 @@ group by
 
 Corresponding project: `boulder_17_localhost.qgz (or `boulder_17_3doslandiacom.qgz`).
 
+![](screenshots/Screenshot_20190808_184838.png)
+
 ### Spider attack
 
 We can simulate a spider attack along main roads. Generate a point layer along the roads using the following queries. Then use the `model` 3D representation for point layers. Choose the `spider.obj` model.
@@ -894,6 +914,8 @@ from (
 ```
 
 Corresponding project: `boulder_18_localhost.qgz` (or `boulder_18_3doslandiacom.qgz`).
+
+![](screenshots/Screenshot_20190808_185246.png)
 
 ### Further exercises
 
