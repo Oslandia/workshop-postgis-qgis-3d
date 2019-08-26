@@ -15,6 +15,8 @@ Duration: 15'
 - PostGIS reference: https://postgis.net/docs/reference.html
 - PointCloud reference: https://github.com/pgpointcloud/pointcloud
 
+![](https://lh3.googleusercontent.com/-4k9mNIcN1zI/V5aoYDnfGwI/AAAAAAAANpo/W5367fBNRLIXRX37eniKPi7TsYg5KLY6ACLcB/s1600/It-Came-HSB_edited-1.gif)
+
 Meanwhile, installation of the software...
 
 ## Infrastructure / Installation
