@@ -38,8 +38,16 @@ comes with QGIS, Postgres (with all the necessary extensions), and the workshop 
 On your local machine you will need:
 
 - VirtualBox
-- This Virtual Machine: workshop-postgis-qgis-3d.ova (on the USB key)
+- This Virtual Machine: workshop-postgis-qgis-3d.ova
 - Enough RAM (more than 8G allocated to the VM is recommended)
+
+The Virtual Machine can be downloaded from Oslandia's hekla.oslandia.net server. Go to
+http://hekla.oslandia.net/workshop-postgis-qgis-3d/ and download the `workshop-postgis-qgis-3d.ova`
+file, as well as the `workshop-postgis-qgis-3d.ova.md5` file if you want to check that the ova file
+hasn't been corrupted during download.
+
+Note: please open an issue on https://github.com/Oslandia/workshop-postgis-qgis-3d if the ova file
+is no longer available on the server.
 
 ### Setup B: online PostGIS
 
